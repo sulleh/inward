@@ -1,0 +1,11 @@
+
+
+<h1> All Entries </h1>
+<br> 
+
+	
+	<% @entries.each do |p| %>
+		<div class="diary-entry-list"> 
+			<ol> <%= link_to p.created_at.strftime("%A %B %e, %G"), p %> <%= p.content %> </ol>
+		</div>
+	<% end %>
