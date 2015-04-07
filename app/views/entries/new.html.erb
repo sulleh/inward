@@ -1,8 +1,13 @@
-<h1>Entries#new</h1>
-<p>Find me in app/views/entries/new.html.erb</p>
+<h1>How are you feeling?</h1>
+
 
 
 <%= simple_form_for @entry do |f| %>
-  <%= f.input :content %>
+  <%= f.input :content, class: 'form-control', label: false, placeholder: 'Write a few sentences....', :input_html => {:class => 'entry-form' } %> 
+
+
   <%= f.button :submit %>
 <% end %>
+ 
+
+<!-- Yes this script should be in the asset pipeline but I don't know how to do that yet. -->

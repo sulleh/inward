@@ -1,11 +1,25 @@
 
 
 <h1> All Entries </h1>
-<br> 
 
+<div class = "row">
+	<div class="col-sm-4">
+		<%= simple_form_for @entry do |f| %>
+  			<%= f.input :content, class: 'form-control', label: false, placeholder: 'Write a few sentences....', :input_html => {:class => 'entry-form' } %> 
+			<%= f.button :submit %>
+		<% end %>
+	</div>
+
+	<div class="col-sm-8">
+			
+			<% @entries.each do |p| %>
+				<div class="diary-entry-list"> 
+					<ol> 
+					<span class="entry-dates"><%= link_to p.created_at.strftime("%A %B %e, %G"), p %> </span> <%= truncate(p.content, length: 70) %> 
+					</ol>
+				</div>
+			<% end %>
+		
+	</div>
+</div>
 	
-	<% @entries.each do |p| %>
-		<div class="diary-entry-list"> 
-			<ol> <%= link_to p.created_at.strftime("%A %B %e, %G"), p %> <%= p.content %> </ol>
-		</div>
-	<% end %>

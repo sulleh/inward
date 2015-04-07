@@ -7,18 +7,101 @@ body {
   padding-top: 50px;
 }
 
+h1 {
+	font-size: 5em;
+	letter-spacing: 2px;
+	font-weight: 100;
+	text-align: left;
+	margin-top: 18px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Helvetica Neue";
+}
+
+.entry-dates {
+  font-size: 1.3em;
+  font-weight: 500;
+  font-family: "Helvetica Neue";
+}
+
+.diary-entry-list {
+    padding: 4px;
+}
+
+/* styling default links */
+a:link {
+    color: #000000;
+}
+
+a:visited {
+    color: #000000;
+}
+
+a:active {
+    color: #000000;
+}
+
+
+/* Entry Page */
+.entry-form {
+	width: 100%;
+	min-height: 200px;
+}
+
+
+/* sidebar */
+
+section { 
+overflow: auto;
+}
+
+aside {
+  section {
+    padding: 10px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+      }
+  }
+}
+
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+#characters {
+    display: block;
+}
+
 
 /* Navbar Styling */
 
 .navbar {
 	border-top: 10px;
-	border-color: #000000;
+	border-color: #FF0BF3;
 	min-height: 40px;
 	max-height: 50px;
 	margin-bottom: 2px;
 	padding-bottom: 1px;
 	background-color: white;
-	font-color: #FFFFFF;
+	font-color: #B204AA;
 
 }
 
@@ -26,7 +109,7 @@ body {
   font-size: 1.8em;
   font-weight: 400;
   font-family: "HelveticaNeue-Light";
-  color: #33CCCC;
+  color: #B204AA;
 
 }
 
@@ -34,26 +117,31 @@ body {
 .navbar-default .navbar-nav > .dropdown > a:hover .caret,
 .navbar-default .navbar-nav > .dropdown > a:focus .caret {
   border-top-color: #33CCCC;
-  border-bottom-color: #33CCCC;
+
 }
 
 .navbar-default .navbar-nav > .open > a .caret,
 .navbar-default .navbar-nav > .open > a:hover .caret,
 .navbar-default .navbar-nav > .open > a:focus .caret {
   border-top-color: #33CCCC;
-  border-bottom-color: #ff0000;
 }
 
 /*set individual nav option */
 .navbar .nav > li > a {
-    color:  #000000;
+    color:  #545454;
     font-weight: 900;
     font-size: .9em;
 }
 
+/*set hover color */
+.navbar .nav > li > a:hover {
+    color:  #B204AA;
+}
+
+
 
 .navbar .nav .dropdown-menu > li > a  {
-        color:#000000;
+        color:#545454;
         font-size: .9em;
         font-family: "Open Sans";
         font-weight: 500;

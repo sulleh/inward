@@ -15,10 +15,12 @@ class EntriesController < ApplicationController
   end
 
   def show
+    @entry = Entry.find(params[:id])
   end
 
   def index
-  	@entries = Entry.all
+  	@entry = Entry.new
+    @entries = Entry.all
   end
 
 
