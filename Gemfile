@@ -25,6 +25,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 
+#word counting gem
+gem 'words_counted'
+
+
 #for login goodness 
 gem 'bcrypt-ruby'
 
