@@ -1,4 +1,29 @@
-<h1> <%= @entry.created_at.strftime("%A %B %e, %G") %> </h1>
+<% entry_analysis = WordsCounted.count(@entry.content, exclude:['the', 'had', 'i', 'im', 'of', 'and', 'to', 
+	'a', 'in', 'for', 'is', 'on', 'that', 'by', 'this', 'with', 'it', 'be', 'are', 'from', 'at', 'as', 'an', 'was', 'will', 'if', 'but', 'has', 'do', 'i\'m', 'some', 'well','am', 'there', 'very', 'since', 'out', 'well'] ) %>
+
+
+
+<!-- Convert the two dimensional array into a usable hash. -->
+<% popular_word_hash = Hash[entry_analysis.most_occurring_words.map { |key,value| [key, value]}] %>
+
+<%= popular_word_hash.first %>
+
+<!-- Loop the hash so we only get the word we want. -->
+<%= popular_word_hash.each_pair do |key, value| %>
+
+<%= key %>
+
+<% end %>
+
+
+<h1> <%= @entry.created_at.strftime("%A %B %e, %G") %> </h1> 
+
+<h3> 
+
+</h3>  
+
+
+test 
 
 
 <%= @entry.content %>
@@ -6,8 +31,7 @@
 
 <br>
 
-<% entry_analysis = WordsCounted.count(@entry.content, exclude:['the', 'i', 'im', 'of', 'and', 'to', 
-	'a', 'in', 'for', 'is', 'on', 'that', 'by', 'this', 'with', 'it', 'be', 'are', 'from', 'at', 'as', 'an', 'was', 'will', 'if', 'but', 'has', 'do', 'i\'m', 'some', 'well','am', 'there', 'very', 'since', 'out', 'well'] ) %>
+
 
 
 <br>
