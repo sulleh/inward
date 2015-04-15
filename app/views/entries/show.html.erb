@@ -1,32 +1,29 @@
-<% entry_analysis = WordsCounted.count(@entry.content, exclude:['the', 'had', 'i', 'im', 'of', 'and', 'to', 
-	'a', 'in', 'for', 'is', 'on', 'that', 'by', 'this', 'with', 'it', 'be', 'are', 'from', 'at', 'as', 'an', 'was', 'will', 'if', 'but', 'has', 'do', 'i\'m', 'some', 'well','am', 'there', 'very', 'since', 'out', 'well'] ) %>
 
 
 
-<!-- Convert the two dimensional array into a usable hash. -->
-<% popular_word_hash = Hash[entry_analysis.most_occurring_words.map { |key,value| [key, value]}] %>
 
-<%= popular_word_hash.first %>
 
-<!-- Loop the hash so we only get the word we want. -->
-<%= popular_word_hash.each_pair do |key, value| %>
 
-<%= key %>
 
+
+
+
+
+<!-- Loop the popular_word_hash (defined in controller) so we get the most popular word. -->
+<% @popular_word_hash.each_pair do |key, value| %>
+	<span class="entry-title">"<%= key %>"</span>
 <% end %>
 
-
-<h1> <%= @entry.created_at.strftime("%A %B %e, %G") %> </h1> 
-
-<h3> 
-
-</h3>  
+<span class="entry-date"> - <%= @entry.created_at.strftime("%a %b %e, %G") %> </span> 
 
 
-test 
+
+ <br>
+ <%= @happy_score %>
+ <br>
 
 
-<%= @entry.content %>
+<div class="entry-body"><%= highlight_words(@entry.content) %></div>
 
 
 <br>
@@ -38,23 +35,29 @@ test
 
 <% if Rails.env.development?  %>
 
-<div class="alert alert-warning" role="alert"> <h4>Debug Output</h4>
-<h5>Inferred Emotion Counts: </h5>
-	<li> Happy: </li>
+<div class="h4 alert alert-warning" role="alert"> Debug Output </div>
+
+<div id="accordion">
+<h3>Inferred Emotion Counts: </h3>
+	<li> Happy: <%= @happy_score %></li>
 	<li> Sad: </li>
 	<li> Afraid-Surprised:</li>
 	<li> Angry-Disgusted:</li>
 	
 
-<h5> Raw Output </h5>
-	<li> Total Characters: <%= entry_analysis.char_count %> </li>
-	<li> Unique Word Count: <%= entry_analysis.unique_word_count %> </li>
-	<li> Most Occurring Word(s): <%= entry_analysis.most_occurring_words %> </li>
-	<li> Longest Word: <%= entry_analysis.longest_words %> </li>
-	<li> Number of words: <%= entry_analysis.word_count %> </li>
-	<li> Longest Word: <%= entry_analysis.longest_words %> </li>
-	<li> Word Occurances: <%= entry_analysis.sorted_word_occurrences.to_s %> </li>
-	<li> All words as an array: <%= entry_analysis.words %> </li>
+<h3> Raw Output </h3>
+	<li> Total Characters: <%= @entry_analysis.char_count %> </li>
+	<li> Unique Word Count: <%= @entry_analysis.unique_word_count %> </li>
+	<li> Most Occurring Word(s): <%= @entry_analysis.most_occurring_words %> </li>
+	<li> Longest Word: <%= @entry_analysis.longest_words %> </li>
+	<li> Number of words: <%= @entry_analysis.word_count %> </li>
+	<li> Longest Word: <%= @entry_analysis.longest_words %> </li>
+	<li> Word Occurances: <%= @entry_analysis.sorted_word_occurrences.to_s %> </li>
+	<li> All words as an array: <%= @entry_analysis.words %> </li>
 </div>
-
 <% end %>
+
+
+
+
+
